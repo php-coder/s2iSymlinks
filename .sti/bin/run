@@ -1,5 +1,3 @@
 #!/bin/sh
 
-cd /tmp
-
-cat src/content.lnk
+cat /tmp/src/content.lnk
