@@ -3,5 +3,5 @@
 cd /tmp/src
 
 if [ -f content.lnk ] && [ -f content.txt ]; then
-    tar cf - *
+    tar cf - content.lnk content.txt
 fi
