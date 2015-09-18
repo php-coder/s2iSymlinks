@@ -8,5 +8,5 @@ fi
 
 if [ ! -f content.lnk ] && [ ! -f content.txt ]; then
     echo 'Content shown from symbolic link' > content.txt
-    ln -s content.text content.lnk
+    ln -s content.txt content.lnk
 fi
