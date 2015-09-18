@@ -1,12 +1,12 @@
 #!/bin/sh
 
-cd /tmp
+cd /tmp/src
 
 if [ -d /tmp/artifacts ] && [ "$(ls -A /tmp/artifacts)" ]; then
     mv /tmp/artifacts/* .
 fi
 
-if [ ! -f src/content.lnk ] && [ ! -f src/content.txt ]; then
-    echo 'Content shown from symbolic link' > src/content.txt
-    ln -s src/content.text src/content.lnk
+if [ ! -f content.lnk ] && [ ! -f content.txt ]; then
+    echo 'Content shown from symbolic link' > content.txt
+    ln -s content.text content.lnk
 fi
