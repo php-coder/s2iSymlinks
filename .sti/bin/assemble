@@ -2,11 +2,20 @@
 
 cd /tmp/src
 
-if [ -d /tmp/artifacts ] && [ "$(ls -A /tmp/artifacts)" ]; then
-    mv /tmp/artifacts/* .
+# The follow code generates artifacts only on first build.
+
+if [ ! -f content.txt ]; then
+    echo 'Generate content'
+    echo 'Content shown from symbolic link' > content.txt
 fi
 
-if [ ! -f content.lnk ] && [ ! -f content.txt ]; then
-    echo 'Content shown from symbolic link' > content.txt
+if [ ! -f content.lnk ]; then
+    echo 'Generate link'
     ln -s content.txt content.lnk
+fi
+
+# Use artifacts if available on subsequent builds
+
+if [ -d /tmp/artifacts ] && [ "$(ls -A /tmp/artifacts)" ]; then
+    mv /tmp/artifacts/* .
 fi
