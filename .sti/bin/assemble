@@ -14,6 +14,23 @@ if [ ! -f content.lnk ]; then
     ln -s content.txt content.lnk
 fi
 
+
+if [ ! -h bad_link ]; then
+    ln -s does-not-exist bad_link
+fi
+
+if [ ! -d nested_dir ]; then
+    mkdir -p nested_dir/dir1/dir2
+    (
+        cd nested_dir/dir1/dir2
+        ln -s ../../../content.txt content.lnk
+    )
+fi
+
+if [ ! -h absolute_link ]; then
+    ln -s /tmp/src/content.txt content.lnk
+fi
+
 # Use artifacts if available on subsequent builds
 
 if [ -d /tmp/artifacts ] && [ "$(ls -A /tmp/artifacts)" ]; then
